@@ -1,0 +1,8 @@
+FROM alpine
+WORKDIR /srv/minecraft
+RUN apk add --no-cache openjdk17-jre-headless && \
+wget https://launcher.mojang.com/v1/objects/125e5adf40c659fd3bce3e66e67a16bb49ecc1b9/server.jar
+COPY copy .
+EXPOSE 25565
+ENTRYPOINT ["java"]
+CMD ["-Xms2G", "-Xmx4G", "-jar", "server.jar", "nogui"]
