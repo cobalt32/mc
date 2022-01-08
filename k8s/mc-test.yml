@@ -13,7 +13,7 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: mc-test-config
+  name: mc-test-cm
 data:
   banned-ips.json: |
     []
@@ -90,7 +90,7 @@ spec:
     spec:
       containers:
       - name: mc-test-pod
-        image: cobalt32/minecraft:1.16.5
+        image: cobalt32/minecraft:1.18.1
         imagePullPolicy: Always
         ports:
         - containerPort: 25565
@@ -100,4 +100,4 @@ spec:
       volumes:
       - name: mc-config
         configMap:
-          name: mc-test-config
+          name: mc-test-cm
