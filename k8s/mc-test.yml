@@ -95,9 +95,9 @@ spec:
         ports:
         - containerPort: 25565
         volumeMounts:
-        - name: mc-config
-          mountPath: /srv/minecraft
+        - name: mc-cm
+          mountPath: /srv/minecraft/config
       volumes:
-      - name: mc-config
+      - name: mc-cm
         configMap:
           name: mc-test-cm
