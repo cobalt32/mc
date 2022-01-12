@@ -95,49 +95,33 @@ spec:
         ports:
         - containerPort: 25565
         volumeMounts:
-        - name: mc-banned-ips
+        - name: mc-cm
           mountPath: /srv/minecraft/banned-ips.json
           subPath: banned-ips.json
-        - name: mc-banned-players
+        - name: mc-cm
           mountPath: /srv/minecraft/banned-players.json
           subPath: banned-players.json
-        - name: mc-ops
+        - name: mc-cm
           mountPath: /srv/minecraft/ops.json
           subPath: ops.json
-        - name: mc-server-properties
+        - name: mc-cm
           mountPath: /srv/minecraft/server.properties
           subPath: server.properties
-        - name: mc-whitelist
+        - name: mc-cm
           mountPath: /srv/minecraft/whitelist.json
           subPath: whitelist.json
       volumes:
-      - name: mc-banned-ips
+      - name: mc-cm
         configMap:
           name: mc-test-cm
           items:
           - key: banned-ips.json
             path: banned-ips.json
-      - name: mc-banned-players
-        configMap:
-          name: mc-test-cm
-          items:
           - key: banned-players.json
             path: banned-players.json
-      - name: mc-ops
-        configMap:
-          name: mc-test-cm
-          items:
           - key: ops.json
             path: ops.json
-      - name: mc-server-properties
-        configMap:
-          name: mc-test-cm
-          items:
           - key: server.properties
             path: server.properties
-      - name: mc-whitelist
-        configMap:
-          name: mc-test-cm
-          items:
           - key: whitelist.json
             path: whitelist.json
