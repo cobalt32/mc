@@ -11,6 +11,18 @@ spec:
     instance: test
 ---
 apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mc-test-pvc
+spec:
+  storageClassName: mc-sc
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 16Gi
+---
+apiVersion: v1
 kind: ConfigMap
 metadata:
   name: mc-test-cm
@@ -95,6 +107,8 @@ spec:
         ports:
         - containerPort: 25565
         volumeMounts:
+        - name: mc-pvc
+          mountPath: /srv/minecraft/world
         - name: mc-cm
           mountPath: /srv/minecraft/banned-ips.json
           subPath: banned-ips.json
@@ -111,6 +125,9 @@ spec:
           mountPath: /srv/minecraft/whitelist.json
           subPath: whitelist.json
       volumes:
+      - name: mc-pvc
+        persistentVolumeClaim:
+          claimName: mc-test-pvc
       - name: mc-cm
         configMap:
           name: mc-test-cm
