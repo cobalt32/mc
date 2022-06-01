@@ -1,3 +1,3 @@
-# Minecraft
+# MC
 
-This is where I store my Dockerfiles and Kubernetes deployments for my containerized Minecraft servers.
+Dockerfiles and Kubernetes deployments for containerized Minecraft servers.
